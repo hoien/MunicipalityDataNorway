@@ -1,0 +1,60 @@
+##Makefile for gathering and cleaning LTC data for Norwegian municipalities##
+##The data is gathered from url#######################
+
+
+########Declare macros##################################
+		
+
+### Declaring .Phony targets ###
+#(these are made irrespective of whether there is a file called it or not)
+
+.Phony: clean all
+
+
+# The working directory for the code files
+
+RDIR = .
+
+# The R command from running R files in batch mode
+
+RCMD := R CMD BATCH
+
+# list R files
+
+RFILES := $(wildcard $(RDIR)/*.R)
+
+# Indicator files to show R file has run
+
+OUT_FILES:= $(RFILES:.R=.Rout)
+
+#all is the default to run all R files
+
+all: $(OUT_FILES)
+
+##############Run the files#######################
+
+## Adding dependencies
+
+# According to Gandrud the files are run in alphanumerical order
+
+
+## Run all R files 
+
+$(RDIR)/%.Rout: $(RDIR)/%.R 
+	R CMD BATCH $<
+
+
+
+##############CLEANING############################
+
+
+# Clean all secondary files
+
+clean: 
+	rm -fv $(OUT_FILES) 
+
+
+
+
+
+	

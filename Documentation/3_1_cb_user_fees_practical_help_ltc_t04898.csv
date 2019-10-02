@@ -1,0 +1,11 @@
+var_names,var_labels,value_label,time_period,measured_at,source
+price_phbc_inc_2G,"practical home based care, Price per hour (NOK), taxable income below 2 G",Norwegian kroner (NOK),2004 - 2016,1.1. yearly,ssb.no/en/statbank/table/04898
+price_phbc_inc_2_3G,"practical home based care, Price per hour (NOK), taxable income 2 - 3 G",Norwegian kroner (NOK),2004 - 2016,1.1. yearly,ssb.no/en/statbank/table/04898
+price_phbc_inc_3_4G,"practical home based care, Price per hour (NOK), taxable income 3 - 4 G",Norwegian kroner (NOK),2004 - 2016,1.1. yearly,ssb.no/en/statbank/table/04898
+price_phbc_inc_4_5G,"practical home based care, Price per hour (NOK), taxable income 4 - 5 G",Norwegian kroner (NOK),2004 - 2016,1.1. yearly,ssb.no/en/statbank/table/04898
+price_phbc_inc_5G,"practical home based care, Price per hour (NOK), taxable income above 5 G",Norwegian kroner (NOK),2004 - 2016,1.1. yearly,ssb.no/en/statbank/table/04898
+max_price_phbc_inc_2G,"practical home based care, Maximum monthly cost by price per hour, taxable income below 2 G, NOK per month",Norwegian kroner (NOK),2004 - 2016,1.1. yearly,ssb.no/en/statbank/table/04898
+max_price_phbc_inc_2_3G,"practical home based care, Maximum monthly cost by price per hour, taxable income 2 - 3 G, NOK per month",Norwegian kroner (NOK),2004 - 2016,1.1. yearly,ssb.no/en/statbank/table/04898
+max_price_phbc_inc_3_4G,"practical home based care, Maximum monthly cost by price per hour, taxable income 3 - 4 G, NOK per month",Norwegian kroner (NOK),2004 - 2016,1.1. yearly,ssb.no/en/statbank/table/04898
+max_price_phbc_inc_4_5G,"practical home based care, Maximum monthly cost by price per hour, taxable income 4 - 5 G, NOK per month",Norwegian kroner (NOK),2004 - 2016,1.1. yearly,ssb.no/en/statbank/table/04898
+max_price_phbc_inc_5G,"practical home based care, Maximum monthly cost by price per hour, taxable income above 5 G, NOK per month",Norwegian kroner (NOK),2004 - 2016,1.1. yearly,ssb.no/en/statbank/table/04898

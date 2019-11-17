@@ -11,9 +11,7 @@ library(readr)
 library(data.table)
 
 
-
-# 
-datadir <- "/Users/henningoien/git_repositories/MunicipalityDataNorway"
+datadir <- "/Users/henningoien/git_repositories/MunicipalityDataNorway/data"
 documentation.dir <- "/Users/henningoien/git_repositories/MunicipalityDataNorway/Documentation"
 
 # Should I have seperate datadirs for each topic?

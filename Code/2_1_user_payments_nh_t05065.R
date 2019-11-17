@@ -1,7 +1,7 @@
 #####################
-### Gathers data on user charges in practical help for LTC patients
-### table: https://www.ssb.no/en/statbank/table/04898
-### Time period: 2004-2016
+### Gathers data on user charges in 1000 nok in nursing-home care
+### table: https://www.ssb.no/en/statbank/table/05065
+### Time period: 2003-2016
 ### Municipalities: classification "All municipalities"
 ###
 ### Henning Øien, October 2019
@@ -11,7 +11,8 @@
 # OBS! run 0_Master.R before running this code. It sets directiories and loads packages.
 
 
-url <- 'https://data.ssb.no/api/v0/en/table/04898/'
+url <- 'https://data.ssb.no/api/v0/en/table/05065/'
+
 
 
 
@@ -20,7 +21,7 @@ call <- '{
     {
       "code": "Region",
       "selection": {
-        "filter": "agg_single:KostraKommuner",
+        "filter": "item",
         "values": [
           "0101",
           "0104",
@@ -463,46 +464,35 @@ call <- '{
           "2025",
           "2027",
           "2028",
-          "2030"
+          "2030",
+          "2111"
         ]
       }
     },
     {
-      "code": "ContentsCode",
+      "code": "Regnskapsomfang",
       "selection": {
         "filter": "item",
         "values": [
-          "CRC2555627687",
-          "CRC3646426417",
-          "CRC2753977501",
-          "CRC4036937690",
-          "CRC2852338345",
-          "CRC707262887",
-          "CRC2803732466",
-          "CRC870664922",
-          "CRC1503178642",
-          "CRC4015808924"
+          "2"
         ]
       }
     },
     {
-      "code": "Tid",
+      "code": "FunksjonKostra",
       "selection": {
         "filter": "item",
         "values": [
-          "2004",
-          "2005",
-          "2006",
-          "2007",
-          "2008",
-          "2009",
-          "2010",
-          "2011",
-          "2012",
-          "2013",
-          "2014",
-          "2015",
-          "2016"
+          "253"
+        ]
+      }
+    },
+    {
+      "code": "ArtGruppe",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "12"
         ]
       }
     }
@@ -511,6 +501,8 @@ call <- '{
     "format": "json-stat2"
   }
 }'
+
+
 
 ## Data
 
@@ -527,11 +519,11 @@ datalabel <- fromJSONstat(content(temp, "text"), naming = "label")
 #Renaming Tid to year
 
 if ("year" %in% names(datalabel) & "Tid" %in% names(data)){
-
+    
     datalabel <- rename(datalabel, Tid = year)
-    } else{
-        stop("Variable names have changed. Stop!")
-            }
+} else{
+    stop("Variable names have changed. Stop!")
+}
 
 merge <- function(df1, df2) {
     if(identical(df1$value, df2$value) == TRUE){
@@ -554,8 +546,14 @@ data <- select(data3, -index)
 # Checking that everything is there
 
 if(sum(c("Region", "Tid", "statistikkvariabel") %in% names(data)) != 3){
-  stop("Some of the variables needed for documentation is not present!")
+    stop("Some of the variables needed for documentation is not present!")
 }
+
+# Documentation
+
+## Creating a variable codebook
+
+## Account type
 
 # Documentation
 
@@ -563,57 +561,39 @@ if(sum(c("Region", "Tid", "statistikkvariabel") %in% names(data)) != 3){
 
 ### Labels
 
-var_labels_orig <- unique(data$statistikkvariabel)
-
-# I have checked that these numbers are almost identical as
-# Oslo municipalities budget. There are only small deviations
-# due to averages over city districs. However, I am 99.9 percent
-# sure that these measure user charges in practical home based care.
-# For example, check out Dok 3 – Oslo kommunes vedtatte budsjett 2016-2019
-# here: https://www.oslo.kommune.no/politikk-og-administrasjon/politikk/budsjett-regnskap-og-rapportering/tidligere-ars-budsjetter-og-regnskap/budsjett-og-regnskap-2016/bystyrets-budsjettvedtak-2016/
-# On page 132 you will see the numbers for 2016.
-
-
-var_labels <- paste("practical home based care", var_labels_orig, sep = ", ")
+var_labels <- "User payments, nursing home, consolidated/konsern accounts"
 
 ### Varnames
 
-var_names <- c("price_phbc_inc_2G", 
-               "price_phbc_inc_2_3G",
-               "price_phbc_inc_3_4G",
-               "price_phbc_inc_4_5G",
-               "price_phbc_inc_5G",
-               "max_price_phbc_inc_2G", 
-               "max_price_phbc_inc_2_3G",
-               "max_price_phbc_inc_3_4G",
-               "max_price_phbc_inc_4_5G",
-               "max_price_phbc_inc_5G")
+var_names <- "user_payment_nh"
 
 ### Variable_units
 
-value_label <- rep("Norwegian kroner (NOK)", length(var_names))
+value_label <- rep("1000 Norwegian kroner (NOK)", length(var_names))
 
 ### Time period
 
 time <- sort(as.numeric(unique(data$Tid)))
 
-time_period <- rep("2004 - 2016", length(var_names))
+time_period <- rep("2003 - 2016", length(var_names))
 
 ### Measured_at
 
-measured_at <- rep("1.1. yearly", length(var_names))
+measured_at <- rep("31.12. yearly", length(var_names))
 
 
 ### Source
 
-source <- rep("ssb.no/en/statbank/table/04898", length(var_names))
+source <- rep("ssb.no/en/statbank/table/05065", length(var_names))
 
 ### codebook
 
-codebook <- as.data.frame(cbind(var_names, var_labels, value_label, time_period, measured_at, source))
+codebook <- as.data.frame(cbind(var_names, var_labels, value_label, time_period, 
+                                measured_at, source))
 
 write_csv(codebook, 
-       path = paste(documentation.dir, "3_1_cb_user_fees_practical_help_ltc_t04898.csv", sep = "/"))
+          path = paste(documentation.dir, 
+                       "2_1_cb_user_payments_nh_t05065.csv", sep = "/"))
 
 # Tidy the data
 
@@ -621,15 +601,23 @@ write_csv(codebook,
 
 data <- as.data.table(data)
 
-data <- dcast(data, Region + Tid ~ statistikkvariabel)
+setnames(data, c("Region", "region", "Tid", "value"), c("knr", "kname", "year", var_names))
 
-setnames(data, var_labels_orig, var_names)
+data <- data[, c("knr", "kname", "year", var_names), with = F]
 
 
 # Save the data
 
-write_csv(data, path = paste(datadir, "3_user_fees", 
-                             "3_1_user_fees_practical_help_ltc_t04898.csv", sep = "/"))
+write_csv(data, path = paste(datadir, "2_accounts", 
+                             "2_1_user_payments_nh_t05065.csv", sep = "/"))
+
+
+
+
+
+
+
+
 
 
 

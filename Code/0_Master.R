@@ -18,6 +18,8 @@ documentation.dir <- "/Users/henningoien/git_repositories/MunicipalityDataNorway
 
 datadir_3 <- "/Users/henningoien/git_repositories/MunicipalityDataNorway/3_user_fees"
 
+## Long-term care
 
+datadir_4 <- "/Users/henningoien/git_repositories/MunicipalityDataNorway/Data/4_long_term_care"
 
 

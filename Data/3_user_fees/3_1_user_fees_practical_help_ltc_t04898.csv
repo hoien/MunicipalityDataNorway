@@ -1,4 +1,4 @@
-Region,Tid,max_price_phbc_inc_2_3G,max_price_phbc_inc_3_4G,max_price_phbc_inc_4_5G,max_price_phbc_inc_5G,max_price_phbc_inc_2G,price_phbc_inc_2_3G,price_phbc_inc_3_4G,price_phbc_inc_4_5G,price_phbc_inc_5G,price_phbc_inc_2G
+knr,year,"Maximum monthly cost by price per hour, taxable income 2 - 3 G, NOK per month","Maximum monthly cost by price per hour, taxable income 3 - 4 G, NOK per month","Maximum monthly cost by price per hour, taxable income 4 - 5 G, NOK per month","Maximum monthly cost by price per hour, taxable income above 5 G, NOK per month","Maximum monthly cost by price per hour, taxable income below 2 G, NOK per month","Price per hour (NOK), taxable income 2 - 3 G","Price per hour (NOK), taxable income 3 - 4 G","Price per hour (NOK), taxable income 4 - 5 G","Price per hour (NOK), taxable income above 5 G","Price per hour (NOK), taxable income below 2 G"
 0101,2004,NA,NA,NA,NA,NA,160,160,160,160,NA
 0101,2005,NA,NA,NA,NA,NA,160,160,160,160,NA
 0101,2006,NA,NA,NA,NA,NA,160,160,160,160,NA

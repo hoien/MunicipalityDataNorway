@@ -625,6 +625,8 @@ data <- dcast(data, Region + Tid ~ statistikkvariabel)
 
 setnames(data, var_labels_orig, var_names)
 
+setnames(data, c("Region", "Tid"), c("knr", "year"))
+
 
 # Save the data
 

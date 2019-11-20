@@ -1,0 +1,5 @@
+var_names,var_labels,value_label,time_period,measured_at,source
+knr,Institution - all available beds (number),Number of beds,2015 - 2018,31.12. yearly,ssb.no/en/statbank/table/11875
+kname,Institution - all available beds (number),Number of beds,2015 - 2018,31.12. yearly,ssb.no/en/statbank/table/11875
+year,Institution - all available beds (number),Number of beds,2015 - 2018,31.12. yearly,ssb.no/en/statbank/table/11875
+nh.beds.located.in.muni,Institution - all available beds (number),Number of beds,2015 - 2018,31.12. yearly,ssb.no/en/statbank/table/11875
